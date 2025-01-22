@@ -1,7 +1,5 @@
 import axios from 'axios';
 const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
-// 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
-// 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
 
 export const apiGetMoviesNowPlaying =(selectMovie = "now_playing") => {
     
@@ -56,3 +54,24 @@ export const apiGetMoviesNowPlaying =(selectMovie = "now_playing") => {
     }
     }
    }
+
+   export const apiGetMovieDetail = (id) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+                {
+                    headers: {
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZDM3MzE2OTIxZjk0MjI3ZTVjNjEwYzZkMjY3OTgyZSIsIm5iZiI6MTczNjk5MzcxMy43NTcsInN1YiI6IjY3ODg2YmIxYTY0ZmViMTZjOTFkMzBmYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9wyaW4Fv7lb2bJr4BdQmEckq2JBfSK9iBVEAfyYgO30',
+                    },
+                }
+            );
+            dispatch({
+                type: "CHANGE_DETAIL_MOVIES",
+                payload: response.data,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};

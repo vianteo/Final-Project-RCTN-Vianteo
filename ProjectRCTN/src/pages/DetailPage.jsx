@@ -1,32 +1,39 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { apiGetMoviesNowPlaying } from "../store/Action";
-import CardComponent from "../components/CardComponent";
+import { useParams } from "react-router-dom";
+import { apiGetMovieDetail } from "../store/Action";
 
-export default function HomePage() {
-    const dataCoba = useSelector (state => state.dataCoba)
-    const dataMovies = useSelector (state => state.dataMovies)
-    const dispatch = useDispatch()
+export default function DetailPage() {
+    const { id } = useParams(); 
+    const dispatch = useDispatch();
+    const detailMovies = useSelector((state) => state.detailMovies);
 
-    useEffect( () => {
-        dispatch(apiGetMoviesNowPlaying())
-         }, [])
-    return(
-        <>
-        <h1>This is Homepage {dataCoba}</h1>
-
-        <div className="row">
-        {
-            dataMovies.map(el =>(
-            <>
-              <CardComponent original_title={el.original_title} popularity={el.popularity} overview={el.overview} release_date={el.release_date} poster_path={el.poster_path}/>
-            </>
-
-            ))
+    useEffect(() => {
+        if (id) {
+            dispatch(apiGetMovieDetail(id)); 
         }
+    }, [id, dispatch]);
+
+    return (
+        <div>
+            <h1>Movie Detail</h1>
+            {detailMovies ? (
+                <div className="card">
+                    <img
+                        src={`http://image.tmdb.org/t/p/w500/${detailMovies.backdrop_path}`}
+                        className="card-img-top"
+                        alt={detailMovies.original_title}
+                    />
+                    <div className="card-body">
+                        <h5 className="card-title">{detailMovies.original_title}</h5>
+                        <p className="card-text">{detailMovies.overview}</p>
+                        <h6>Release Date: {detailMovies.release_date}</h6>
+                        <h6>Popularity: {detailMovies.popularity}</h6>
+                    </div>
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
-       
-        {JSON.stringify(dataMovies)}
-        </>
-    )
+    );
 }

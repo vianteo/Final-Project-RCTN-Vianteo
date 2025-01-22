@@ -19,14 +19,20 @@ export default function HomePage() {
         {
             dataMovies.map(el =>(
             <>
-              <CardComponent original_title={el.original_title} popularity={el.popularity} overview={el.overview} release_date={el.release_date} poster_path={el.poster_path}/>
+              <CardComponent 
+                id={el.id} 
+                original_title={el.original_title} 
+                popularity={el.popularity} 
+                overview={el.overview} 
+                release_date={el.release_date} 
+                poster_path={el.poster_path}
+              />
             </>
-
             ))
         }
         </div>
        
-        {JSON.stringify(dataMovies)}
+        {/* {JSON.stringify(dataMovies)} */}
         </>
     )
 }
