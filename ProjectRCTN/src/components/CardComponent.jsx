@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CardComponent({ id, original_title, popularity, overview, release_date, poster_path }) {
     return (
-        <div className="card m-3" style={{ width: "18rem" }}>
+        <div className="card m-2" style={{ width: "18rem" }}>
             <img
                 src={`http://image.tmdb.org/t/p/w500/${poster_path}`}
                 className="card-img-top"

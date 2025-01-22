@@ -16,7 +16,7 @@ export default function DetailPage() {
 
     return (
         <div>
-            <h1>Movie Detail</h1>
+            <h1>Baca Sinopsis Lengkap Siapa Tau Tertarik</h1>
             {detailMovies ? (
                 <div className="card">
                     <img

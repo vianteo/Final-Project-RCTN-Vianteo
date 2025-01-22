@@ -48,17 +48,16 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Membatasi teks overview dalam card */
 .overview-text {
   display: -webkit-box;
-  -webkit-line-clamp: 3;  /* Batasi ke 3 baris */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 0.9rem;
   color: #555;
   text-align: left;
-  max-height: 4.5em; /* Sesuaikan tinggi agar tidak lebih dari 3 baris */
+  max-height: 4.5em;
 }
 
 .read-the-docs {

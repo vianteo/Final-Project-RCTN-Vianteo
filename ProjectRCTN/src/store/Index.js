@@ -5,7 +5,7 @@ const initialState = {
     dataMovies: [],
     detailMovies: {},
 
-    dataCoba:"Aku terpanggil"
+    dataCoba:"Untuk Nonton Gratis"
 }
  
 const reducer = (state = initialState, action) => {
