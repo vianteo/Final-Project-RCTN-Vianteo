@@ -13,6 +13,7 @@ function App() {
       <NavbarComponent/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path="/movie/:id" element={<DetailPage />} />
       </Routes>
     </>
   )

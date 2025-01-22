@@ -3,7 +3,7 @@ import {thunk} from "redux-thunk"
  
 const initialState = {
     dataMovies: [],
-    detailMovies: [],
+    detailMovies: {},
 
     dataCoba:"Aku terpanggil"
 }
